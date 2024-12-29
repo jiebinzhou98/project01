@@ -10,9 +10,10 @@ export const Navigation = () => {
         <nav className="flex justify-center items-center p-4">
             <Link href={"/"}
                 className={pathname === "/" ? "font-bold mr-4" : "text-blue-50 mr-4"}>Home</Link>
-
             <Link href={"/about"}
                 className={pathname === "/about" ? "font-bold mr-4" : "text-blue-50 mr-4"}>About</Link>
+            <Link href={"/contact"}
+                className={pathname === "/contact" ? "font-bold mr-4" : "text-blue-50 mr-4"}>Contact</Link>
             <SignedOut>
                 <SignInButton mode="modal" />
             </SignedOut>
