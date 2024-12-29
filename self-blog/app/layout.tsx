@@ -35,6 +35,7 @@ export default function RootLayout({
           </header>
           {children}
         </body>
+        {/* <footer className="text-white p-4 text-cente">copy right project01</footer> */}
       </html>
     </ClerkProvider>
   );
