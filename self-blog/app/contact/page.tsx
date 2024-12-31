@@ -4,7 +4,8 @@ import { useState } from "react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: "",
+    firstname: "",
+    lastname:"",
     email: "",
     subject: "",
     message: "",
@@ -19,7 +20,7 @@ export default function Contact() {
     e.preventDefault();
     console.log("Form submitted:", formData);
     alert("Thank you for contacting us!");
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setFormData({ firstname: "", lastname: "",  email: "", subject: "", message: "" });
   };
 
   return (
@@ -27,14 +28,28 @@ export default function Contact() {
       <h1 className="text-2xl font-bold mb-4 text-black">Contact Us</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-            Name
+          <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">
+            First Name
           </label>
           <input
             type="text"
-            id="name"
-            name="name"
-            value={formData.name}
+            id="firstname"
+            name="firstname"
+            value={formData.firstname}
+            onChange={handleChange}
+            required
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="lastname" className="block text-sm font-medium text-gray-700">
+            Last Name
+          </label>
+          <input
+            type="text"
+            id="lastname"
+            name="lastname"
+            value={formData.lastname}
             onChange={handleChange}
             required
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
