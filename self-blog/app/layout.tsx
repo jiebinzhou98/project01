@@ -31,9 +31,9 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
         >
-          <header className="bg-slate-700 text-white p-4 text-center">
+          {/* <header className="bg-slate-900 text-white py-2 px-4 text-center shadow-sm"> */}
             <Navigation />
-          </header>
+          {/* </header> */}
           <main className="flex-grow">{children}</main>
           <Foooter/>
         </body>

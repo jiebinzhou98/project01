@@ -7,7 +7,7 @@ export const Navigation = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="flex justify-center items-center p-4 shadow-sm bg-slate-900 text-white">
+    <header className="flex justify-center items-center p-4 shadow-sm bg-slate-900 text-white">
       <Link
         href={"/"}
         className={pathname === "/" ? "font-bold mr-4 underline" : "text-blue-50 mr-4"}
@@ -32,6 +32,6 @@ export const Navigation = () => {
       <SignedIn>
         <UserButton />
       </SignedIn>
-    </nav>
+    </header>
   );
 };
