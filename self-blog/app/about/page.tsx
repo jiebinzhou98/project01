@@ -19,7 +19,7 @@ export default function About() {
         {/* Image Section */}
         <section className="mb-8 text-center">
           <img
-            src="/images/about-us.jpg"
+            src="/images/pexels-pixabay-Blog_image.jpg"
             alt="About Us"
             className="rounded-lg shadow-md mx-auto"
             style={{ maxHeight: "300px", objectFit: "cover" }}
