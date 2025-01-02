@@ -18,14 +18,16 @@ export default function Home() {
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
         {/* Featured Blog Card */}
         <div className="bg-white p-6 rounded-lg shadow-lg">
-          <h2 className="text-center  font-bold mb-2">Featured Blog Post Title</h2>
+          <h2 className="text-center font-bold mb-2">Featured Blog Post Title</h2>
           <p className="mb-4 text-center text-gray-700">A brief excerpt of the featured blog post...</p>
-          <Link
-            href="/blog/1" // Replace with dynamic post link
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-          >
-            Read More
-          </Link>
+          <div className="flex justify-center">
+            <Link
+              href="/blog/1" // Replace with dynamic post link
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            >
+              Read More
+            </Link>
+          </div>
         </div>
 
         {/* About Card */}
@@ -34,14 +36,17 @@ export default function Home() {
           <p className="text-center mb-4 text-gray-700">
             Welcome to my blog! I share articles on various topics, including technology, lifestyle, and more. Stay tuned for interesting content.
           </p>
-          <Link
-            href="/about"
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-          >
-            Learn More
-          </Link>
+          <div className="flex justify-center">
+            <Link
+              href="/about"
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            >
+              Learn More
+            </Link>
+          </div>
         </div>
       </section>
+
 
       {/* CTA Section - Card */}
       <section className="text-center mb-10">
