@@ -14,49 +14,52 @@ export default function Home() {
         </Link>
       </section>
 
-      {/* Featured Blog Section */}
-      <section className="text-center mb-10">
-        <h2 className="text-2xl font-semibold mb-4">Featured Blog</h2>
-        <div className="bg-gray-100 p-4 rounded-md">
-          <h3 className="text-xl font-bold mb-2">Featured Blog Post Title</h3>
-          <p className="mb-4">A brief excerpt of the featured blog post...</p>
+      {/* Featured Blog and About Section - Side by side */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        {/* Featured Blog Card */}
+        <div className="bg-white p-6 rounded-lg shadow-lg">
+          <h2 className="text-center  font-bold mb-2">Featured Blog Post Title</h2>
+          <p className="mb-4 text-center text-gray-700">A brief excerpt of the featured blog post...</p>
           <Link
             href="/blog/1" // Replace with dynamic post link
-            className="text-blue-600 hover:text-blue-800"
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
           >
             Read More
           </Link>
         </div>
+
+        {/* About Card */}
+        <div className="bg-white p-6 rounded-lg shadow-lg">
+          <h2 className="text-center text-xl font-bold mb-2">About the Blog</h2>
+          <p className="text-center mb-4 text-gray-700">
+            Welcome to my blog! I share articles on various topics, including technology, lifestyle, and more. Stay tuned for interesting content.
+          </p>
+          <Link
+            href="/about"
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          >
+            Learn More
+          </Link>
+        </div>
       </section>
 
-      {/* About Section */}
-      <section className="text-center mb-10">
-        <h2 className="text-2xl font-semibold mb-4">About the Blog</h2>
-        <p className="mb-4">
-          Welcome to my blog! I share articles on various topics, including technology, lifestyle, and more. Stay tuned for interesting content.
-        </p>
-        <Link
-          href="/about"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
-          Learn More
-        </Link>
-      </section>
-
-      {/* CTA Section */}
+      {/* CTA Section - Card */}
       <section className="text-center mb-10">
         <h2 className="text-2xl font-semibold mb-4">Stay Updated</h2>
-        <p className="mb-4">Subscribe to our newsletter and get the latest blog posts directly to your inbox!</p>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          className="px-4 py-2 rounded-l-md border"
-        />
-        <button className="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700">
-          Subscribe
-        </button>
+        <div className="max-w-sm mx-auto bg-white p-6 rounded-lg shadow-lg">
+          <p className="mb-4 text-gray-700">Subscribe to our newsletter and get the latest blog posts directly to your inbox!</p>
+          <div className="flex">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="px-4 py-2 rounded-l-md border focus:outline-none"
+            />
+            <button className="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700">
+              Subscribe
+            </button>
+          </div>
+        </div>
       </section>
-
     </div>
   );
 }
