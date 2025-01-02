@@ -7,31 +7,45 @@ export const Navigation = () => {
   const pathname = usePathname();
 
   return (
-    <header className="flex justify-center items-center p-4 shadow-sm bg-slate-900 text-white">
-      <Link
-        href={"/"}
-        className={pathname === "/" ? "font-bold mr-4 underline" : "text-blue-50 mr-4"}
-      >
-        Home
+    <nav className="flex justify-between items-center bg-slate-900 text-white p-4">
+      {/* Logo Section */}
+      <Link href="/">
+        <img
+          src="/favicon.ico" // Replace with your logo path
+          alt="Logo"
+          className="h-10 w-auto object-contain" // Adjust size as needed
+        />
       </Link>
-      <Link
-        href={"/about"}
-        className={pathname === "/about" ? "font-bold mr-4 underline" : "text-blue-50 mr-4"}
-      >
-        About
-      </Link>
-      <Link
-        href={"/contact"}
-        className={pathname === "/contact" ? "font-bold mr-4 underline" : "text-blue-50 mr-4"}
-      >
-        Contact
-      </Link>
-      <SignedOut>
-        <SignInButton mode="modal" />
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
-    </header>
+
+      {/* Navigation Links */}
+      <div className="flex items-center space-x-4">
+        <Link
+          href="/"
+          className={pathname === "/" ? "font-bold text-white" : "text-blue-50"}
+        >
+          Home
+        </Link>
+        <Link
+          href="/about"
+          className={pathname === "/about" ? "font-bold text-white" : "text-blue-50"}
+        >
+          About
+        </Link>
+        <Link
+          href="/contact"
+          className={pathname === "/contact" ? "font-bold text-white" : "text-blue-50"}
+        >
+          Contact
+        </Link>
+
+        {/* Sign-In/Out Buttons */}
+        <SignedOut>
+          <SignInButton mode="modal" />
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+      </div>
+    </nav>
   );
 };
