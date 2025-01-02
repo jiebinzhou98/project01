@@ -1,4 +1,5 @@
-// pages/blog.tsx
+import Link from "next/link";
+
 type Post = {
   id: number;
   title: string;
@@ -7,14 +8,23 @@ type Post = {
 
 export default async function Blog() {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-  const datas: Post[] = await res.json(); // Explicitly typing the response
+  const posts: Post[] = await res.json();
 
   return (
-    <div className="grid grid-cols-4 gap-4 py-10">
-      {datas.map((data) => (
-        <div key={data.id} className="p-4 border rounded shadow-sm">
-          <h3 className="text-lg font-semibold">{data.title}</h3>
-          <p className="text-sm">{data.body}</p>
+    <div className="max-w-4xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+      {posts.map((post) => (
+        <div
+          key={post.id}
+          className="p-4 border border-gray-200 rounded shadow hover:shadow-lg transition"
+        >
+          <h2 className="text-xl font-bold mb-2">{post.title}</h2>
+          <p className="text-gray-600 line-clamp-3">{post.body}</p>
+          <Link
+            href={`/blog/${post.id}`}
+            className="text-blue-600 hover:underline mt-2 inline-block"
+          >
+            Read More
+          </Link>
         </div>
       ))}
     </div>
