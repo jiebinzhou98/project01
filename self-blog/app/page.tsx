@@ -4,20 +4,27 @@ import { useState } from "react";
 
 export default function Home() {
 
-  const [email, setEmail] = useState ("");
+  const [email, setEmail] = useState("");
 
-  
-  const handleSubmit = (event: React.FormEvent) =>{
+  const [isSuccess, setIsSuccess] = useState(false);
+
+
+  const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    if(!email){
+    if (!email) {
       alert("Please enter a valid email")
       return;
     }
 
-    console.log("subscribe with email: ",email)
+    console.log("subscribe with email: ", email)
+    setIsSuccess(true);
     setEmail("");
-  }
+  };
+
+  const closeSuccessMessage = () => {
+    setIsSuccess(false);
+  };
 
 
   return (
@@ -73,23 +80,39 @@ export default function Home() {
         <div className="max-w-sm mx-auto bg-white p-6 rounded-lg shadow-lg">
           <p className="mb-4 text-gray-700">Subscribe to our newsletter and get the latest blog posts directly to your inbox!</p>
           <form onSubmit={handleSubmit}>
-          <div className="flex">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              className="px-4 py-2 rounded-l-md border focus:outline-none"
-            />
-            <button 
-              type="submit"
-              className="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700">
-              Subscribe
-            </button>
-          </div>
+            <div className="flex">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                className="px-4 py-2 rounded-l-md border focus:outline-none"
+              />
+              <button
+                type="submit"
+                className="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700">
+                Subscribe
+              </button>
+            </div>
           </form>
         </div>
       </section>
+
+      {/* Success Pop-up Message */}
+      {isSuccess && (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+            <h3 className="text-xl font-semibold mb-4">Subscription Successful!</h3>
+            <p className="text-gray-700 mb-4">Thank you for subscribing to our newsletter!</p>
+            <button
+              onClick={closeSuccessMessage}
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
