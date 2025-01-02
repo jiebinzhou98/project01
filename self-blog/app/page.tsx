@@ -1,6 +1,25 @@
+"use client"
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Home() {
+
+  const [email, setEmail] = useState ("");
+
+  
+  const handleSubmit = (event: React.FormEvent) =>{
+    event.preventDefault();
+
+    if(!email){
+      alert("Please enter a valid email")
+      return;
+    }
+
+    console.log("subscribe with email: ",email)
+    setEmail("");
+  }
+
+
   return (
     <div className="px-6 py-10">
       {/* Hero Section */}
@@ -53,16 +72,22 @@ export default function Home() {
         <h2 className="text-2xl font-semibold mb-4">Stay Updated</h2>
         <div className="max-w-sm mx-auto bg-white p-6 rounded-lg shadow-lg">
           <p className="mb-4 text-gray-700">Subscribe to our newsletter and get the latest blog posts directly to your inbox!</p>
+          <form onSubmit={handleSubmit}>
           <div className="flex">
             <input
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               className="px-4 py-2 rounded-l-md border focus:outline-none"
             />
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700">
+            <button 
+              type="submit"
+              className="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700">
               Subscribe
             </button>
           </div>
+          </form>
         </div>
       </section>
     </div>
