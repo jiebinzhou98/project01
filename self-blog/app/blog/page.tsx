@@ -13,7 +13,6 @@ export default function Blog() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [newPost, setNewPost] = useState({ title: "", body: "" });
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -35,22 +34,6 @@ export default function Blog() {
     setFilteredPosts(filtered);
   }, [searchTerm, posts]);
 
-  const handleAddPost = () => {
-    if (newPost.title.trim() && newPost.body.trim()) {
-      const newPostData: Post = {
-        id: posts.length + 1,
-        title: newPost.title,
-        body: newPost.body,
-      };
-
-      const updatedPosts = [newPostData, ...posts];
-      setPosts(updatedPosts);
-      setFilteredPosts(updatedPosts);
-      setNewPost({ title: "", body: "" });
-    } else {
-      alert("Please fill in both the title and body!");
-    }
-  };
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
@@ -63,31 +46,12 @@ export default function Blog() {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-      </div>
-
-      {/* Add Blog Section */}
-      <div className="mb-10 p-6 border rounded-lg shadow-lg bg-white">
-        <h2 className="text-xl font-semibold mb-4">Add a New Blog</h2>
-        <input
-          type="text"
-          placeholder="Blog Title"
-          value={newPost.title}
-          onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
-          className="w-full px-4 py-2 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <textarea
-          placeholder="Blog Content"
-          value={newPost.body}
-          onChange={(e) => setNewPost({ ...newPost, body: e.target.value })}
-          className="w-full px-4 py-2 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-          rows={4}
-        />
-        <button
-          onClick={handleAddPost}
-          className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+        <Link
+          href="/add-newblog"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition ml-4"
         >
-          Add Blog
-        </button>
+          Add New Blog
+        </Link>
       </div>
 
       {/* Blog Posts in 3-Column Grid */}
