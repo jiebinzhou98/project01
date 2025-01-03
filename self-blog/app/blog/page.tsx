@@ -6,6 +6,8 @@ type Post = {
   body: string;
 };
 
+//include filter
+
 export default async function Blog() {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   const posts: Post[] = await res.json();
