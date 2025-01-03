@@ -48,6 +48,12 @@ export default function AddNewBlog() {
       >
         Submit
       </button>
+      <a
+        href="/blog"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition ml-4"
+        >
+        Return
+        </a>
     </div>
   );
 }
