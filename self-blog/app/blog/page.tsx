@@ -13,10 +13,9 @@ export default function Blog() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [newPost, setNewPost] = useState({title: "", body: ""})
+  const [newPost, setNewPost] = useState({ title: "", body: "" });
 
   useEffect(() => {
-    // Fetch posts when the component loads
     const fetchPosts = async () => {
       const res = await fetch("https://jsonplaceholder.typicode.com/posts");
       const data: Post[] = await res.json();
@@ -28,7 +27,6 @@ export default function Blog() {
   }, []);
 
   useEffect(() => {
-    // Filter posts whenever the search term changes
     const filtered = posts.filter(
       (post) =>
         post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -37,26 +35,25 @@ export default function Blog() {
     setFilteredPosts(filtered);
   }, [searchTerm, posts]);
 
-
-  const handleAddPost = () =>{
-    if(newPost.title.trim() && newPost.body.trim()){
-      const newPostData: Post ={
-        id: posts.length +1,
+  const handleAddPost = () => {
+    if (newPost.title.trim() && newPost.body.trim()) {
+      const newPostData: Post = {
+        id: posts.length + 1,
         title: newPost.title,
         body: newPost.body,
-      }
+      };
 
-      const updataPosts = [newPostData, ...posts];
-      setPosts(updataPosts);
-      setFilteredPosts(updataPosts);
-      setNewPost({title: "", body: ""});
-    }else{
-      alert("please fill out the title and body for the blog!!!");
+      const updatedPosts = [newPostData, ...posts];
+      setPosts(updatedPosts);
+      setFilteredPosts(updatedPosts);
+      setNewPost({ title: "", body: "" });
+    } else {
+      alert("Please fill in both the title and body!");
     }
-  }
+  };
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10">
+    <div className="max-w-6xl mx-auto px-6 py-10">
       {/* Search Bar */}
       <div className="mb-6">
         <input
@@ -68,8 +65,8 @@ export default function Blog() {
         />
       </div>
 
-            {/* Add Blog Section */}
-            <div className="mb-10 p-6 border rounded-lg shadow-lg bg-white">
+      {/* Add Blog Section */}
+      <div className="mb-10 p-6 border rounded-lg shadow-lg bg-white">
         <h2 className="text-xl font-semibold mb-4">Add a New Blog</h2>
         <input
           type="text"
@@ -93,9 +90,8 @@ export default function Blog() {
         </button>
       </div>
 
-
-      {/* Blog Posts */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Blog Posts in 3-Column Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredPosts.map((post) => (
           <div
             key={post.id}
